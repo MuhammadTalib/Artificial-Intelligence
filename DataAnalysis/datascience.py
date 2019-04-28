@@ -1,0 +1,57 @@
+import pandas as pa
+import numpy as np
+import matplotlib.pyplot as pl
+
+car=pa.read_csv('olxcardata.csv', delimiter=',', encoding = "ISO-8859-1")
+
+print(car['Model'].value_counts())
+
+print("Brand vs Price")
+a = car.groupby('Brand').Price.sum()
+fig = pl.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.set_xlabel('Brand')
+ax1.set_ylabel('Price')
+ax1.set_title("Brand Vs Price")
+a.plot(kind='bar')
+pl.show()
+
+print("Condition vs Price")
+a = car.groupby('Condition').Price.sum()
+fig = pl.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.set_xlabel('Condition')
+ax1.set_ylabel('Price')
+ax1.set_title("Condition Vs Price")
+a.plot(kind='bar')
+pl.show()
+
+print("Fuel vs Price")
+a = car.groupby('Fuel').Price.sum()
+fig = pl.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.set_xlabel('Fuel')
+ax1.set_ylabel('Price')
+ax1.set_title("Fuel Vs Price")
+a.plot(kind='bar')
+pl.show()
+
+print("Year vs Condition")
+a = car.groupby('Condition').Year.sum()
+fig = pl.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.set_xlabel('Condition')
+ax1.set_ylabel('Year')
+ax1.set_title('Year vs Condition')
+a.plot(kind='bar')
+pl.show()
+
+print("Year vs Price")
+a = car.groupby('Year').Price.sum()
+fig = pl.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.set_xlabel('Year')
+ax1.set_ylabel('Price')
+ax1.set_title('Year vs Price')
+a.plot(kind='bar')
+pl.show()
